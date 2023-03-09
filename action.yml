@@ -1,0 +1,27 @@
+name: 'JSONResume Export'
+
+description: 'Simple GitHub Action to export your JSONResume'
+
+branding:
+  icon: 'printer'
+  color: 'yellow'
+
+inputs:
+  resume_filepath:
+    description: |
+      File path of the resume in JSONResume format
+    required: false
+    default: 'resume.json'
+
+  output_filepath:
+    description: |
+      Output file path for exported files.
+    required: false
+    default: 'index'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.resume_filepath }}
+    - ${{ inputs.output_filepath }}
